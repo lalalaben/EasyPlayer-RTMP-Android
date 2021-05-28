@@ -15,6 +15,7 @@ import org.easydarwin.video.EasyPlayerClient;
 public class MainActivity extends AppCompatActivity {
 
     private EasyPlayerClient client;
+    public static final String KEY = BuildConfig.PLAYER_RTMP_KEY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +30,11 @@ public class MainActivity extends AppCompatActivity {
          * 第四个参数为一个ResultReceiver,用来接收SDK层发上来的事件通知;
          * 第五个参数为I420DataCallback,如果不为空,那底层会把YUV数据回调上来.
          */
-        client = new EasyPlayerClient(this, BuildConfig.KEY, textureView, null, null);
+        client = new EasyPlayerClient(this, KEY, textureView, null, null);
         final EditText et = new EditText(this);
         et.setHint("请输入RTMP地址");
         final SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        et.setText(sp.getString("url","rtmp://202.69.69.180:443/webcast/bshdlive-pc"));
+        et.setText(sp.getString("url","rtmp://1.13.13.98:1935/wanglei/test"));
 
         new AlertDialog.Builder(this).setView(et).setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             @Override
